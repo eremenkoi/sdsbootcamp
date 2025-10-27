@@ -1,37 +1,41 @@
-# SuperDataScience AI Bootcamp
+# SDS Bootcamp - Personal Repository
 
-![Bootcamp](assets/banner2.png)
+This is my personal repository containing the SDS Bootcamp materials with my modifications, experiments, and solutions.
 
-## 8 week intensive bootcamp on AI Engineering, Agentic AI, and Building & Deploying Production AI Systems
+## Repository Structure
 
+- **Original SDS Materials**: Complete copy of the SDS bootcamp curriculum
+- **Personal Modifications**: My changes to labs and exercises
+- **Experiments**: Additional code and experiments I've created
+- **Solutions**: My solutions to various lab exercises
 
-_If you're looking at this in Cursor, please right click on the filename in the Explorer on the left, and select "Open preview", to view the formatted version._
+## Key Files Modified
 
-This repo is for the first 4 weeks where we immerse ourselves in LLMs and Agents, before you move to building and deploying AI systems for Production.
+- `week3/lab2.ipynb` - Lab 2 modifications
+- `week3/lab3.ipynb` - Lab 3 modifications  
+- `week3/lab4.ipynb` - Lab 4 modifications
+- `week3/lab5.ipynb` - Lab 5 modifications
+- `week3/lab7.ipynb` - Lab 7 modifications
+- `week4/lab1.ipynb` - Lab 1 modifications
+- `week4/lab2.ipynb` - Lab 2 modifications
+- `week4/lab3.ipynb` - Lab 3 modifications
+- `week4/sandbox/news.md` - News content updates
+- `week4/sandbox/output.md` - Output documentation
+- `week4/twin/lab4.ipynb` - Twin lab modifications
+- `week4/twin/questions_mcp_server.py` - MCP server updates
 
-Please reach out to me on Slack at any time if I can help.
+## Usage
 
-PRE-WORK:
+This repository serves as:
+1. A backup of my SDS bootcamp work
+2. A portfolio of my learning progress
+3. A reference for future projects
+4. A way to track my modifications and experiments
 
-Please check out this 3-hour course. You should have access to it through your SuperDataScience credentials:
+## Original Repository
 
-https://community.superdatascience.com/c/ai-engineering-essentials-part-1
+Based on the original SDS bootcamp repository. This personal fork contains my modifications and should not be considered the official curriculum.
 
-First, read the course description. If you're not familiar with this material already (like, making API calls to the OpenAI API) then please take this course in advance.
+---
 
-We will very briefly recap this at the time..
-
-And now - the setup instructions:
-
-- Windows people, your instructions are [here](setup/SETUP-PC.md)
-- Mac people, yours are [here](setup/SETUP-mac.md)
-- Linux people, yours are [here](setup/SETUP-linux.md)
-
-Any problems, please do contact me.
-
-### Super useful resources
-
-- Many essential guides in the [guides](guides/01_intro.ipynb) section
-- The [troubleshooting](setup/troubleshooting.ipynb) notebook
-
-Be sure to monitor your API costs to ensure you are totally happy with any spend. For OpenAI, the dashboard is [here](https://platform.openai.com/usage).
+**Note**: This repository contains my personal work and modifications to the SDS bootcamp materials. It's intended for my own learning and portfolio purposes.
