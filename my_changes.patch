@@ -1,0 +1,1648 @@
+diff --git a/week3/lab2.ipynb b/week3/lab2.ipynb
+index a058c8e..86834f2 100644
+--- a/week3/lab2.ipynb
++++ b/week3/lab2.ipynb
+@@ -26,9 +26,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from agents import Agent, Runner\n",
+     "from IPython.display import Markdown, display\n",
+@@ -41,7 +52,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -50,7 +61,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -69,9 +80,22 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/markdown": [
++       "I choose to Share. Cooperation offers a fair and positive outcome for both of us, building trust and maximizing our joint gain."
++      ],
++      "text/plain": [
++       "<IPython.core.display.Markdown object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
+    "source": [
+     "result = await Runner.run(autonomous_agent, input)\n",
+     "display(Markdown(result.final_output))"
+@@ -142,7 +166,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 5,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -154,9 +178,19 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "Pull lever? True\n",
++      "Reasoning: In a one-shot Prisoner's Dilemma, the dominant strategy is to Steal. If the partner shares, stealing yields 2,000 vs 1,000; if the partner steals, you get 0 either way, so stealing never hurts you and can help if they share.\n",
++      "Counter-argument: A counter-argument is that if you can trust the other player or if this game is repeated, mutual sharing can yield a higher stable payoff (1,000 each). Also, mutual defection yields nothing for both, and cooperation could be sustained by reputation or repeated play.\n"
++     ]
++    }
++   ],
+    "source": [
+     "autonomous_agent_with_structure = Agent(name=\"Autonomous Agent\", instructions=\"You are an autonomous agent\", model=\"gpt-5-nano\", output_type=Decision)\n",
+     "result = await Runner.run(autonomous_agent_with_structure, input)\n",
+@@ -190,7 +224,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week3/lab3.ipynb b/week3/lab3.ipynb
+index 44f0f00..1a13225 100644
+--- a/week3/lab3.ipynb
++++ b/week3/lab3.ipynb
+@@ -9,9 +9,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from dotenv import load_dotenv\n",
+     "from agents import Agent, Runner\n",
+@@ -23,23 +34,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "instructions = \"\"\"\n",
+-    "You represent the AI Digital Twin of a human called Ed Donner.\n",
+-    "You are friendly and amiable, and you introduce yourself as Ed's Digital Twin.\n",
+-    "Ed is the co-founder and CTO of AI startup Nebula.io.\n",
+-    "He loves coding and experimenting with LLMs, and he speaks at conferences and lectures about LLMs.\n",
+-    "You chat with visitors on Ed's personal website. You answer questions about Ed's work.\n",
++    "You represent the AI Digital Twin of a human called Ilya Eremenko.\n",
++    "You are friendly and amiable, and you introduce yourself as Ilya's Digital Twin.\n",
++    "Ilya is an automation and AI consultant.\n",
+     "If you don't know the answer, say so.\n",
+     "\"\"\""
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -48,7 +57,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 5,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -61,16 +70,45 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "* Running on local URL:  http://127.0.0.1:7860\n",
++      "* To create a public link, set `share=True` in `launch()`.\n"
++     ]
++    },
++    {
++     "data": {
++      "text/html": [
++       "<div><iframe src=\"http://127.0.0.1:7860/\" width=\"100%\" height=\"500\" allow=\"autoplay; camera; microphone; clipboard-read; clipboard-write;\" frameborder=\"0\" allowfullscreen></iframe></div>"
++      ],
++      "text/plain": [
++       "<IPython.core.display.HTML object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/plain": []
++     },
++     "execution_count": 6,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "gr.ChatInterface(chat, type=\"messages\").launch()"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 7,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -87,9 +125,38 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "* Running on local URL:  http://127.0.0.1:7861\n",
++      "* To create a public link, set `share=True` in `launch()`.\n"
++     ]
++    },
++    {
++     "data": {
++      "text/html": [
++       "<div><iframe src=\"http://127.0.0.1:7861/\" width=\"100%\" height=\"500\" allow=\"autoplay; camera; microphone; clipboard-read; clipboard-write;\" frameborder=\"0\" allowfullscreen></iframe></div>"
++      ],
++      "text/plain": [
++       "<IPython.core.display.HTML object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/plain": []
++     },
++     "execution_count": 8,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "gr.ChatInterface(chat, type=\"messages\").launch()"
+    ]
+@@ -118,7 +185,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week3/lab4.ipynb b/week3/lab4.ipynb
+index b43e155..b8d40a4 100644
+--- a/week3/lab4.ipynb
++++ b/week3/lab4.ipynb
+@@ -9,9 +9,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from dotenv import load_dotenv\n",
+     "from agents import Agent, Runner, function_tool\n",
+@@ -25,7 +36,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -36,7 +47,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -47,7 +58,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 15,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -56,16 +67,16 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 16,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "@function_tool\n",
+     "def push(message: str) -> str:\n",
+-    "    \"\"\"Send a text message as a push notification to Ed with this brief message\n",
++    "    \"\"\"Send a text message as a push notification to Ilya with this brief message\n",
+     "\n",
+     "    Args:\n",
+-    "        message: The short text message to push to Ed\n",
++    "        message: The short text message to push to Ilya\n",
+     "    \"\"\"\n",
+     "\n",
+     "    send_push_notification(message)\n",
+@@ -74,32 +85,47 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 17,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "{'properties': {'message': {'description': 'The short text message to push to Ilya',\n",
++       "   'title': 'Message',\n",
++       "   'type': 'string'}},\n",
++       " 'required': ['message'],\n",
++       " 'title': 'push_args',\n",
++       " 'type': 'object',\n",
++       " 'additionalProperties': False}"
++      ]
++     },
++     "execution_count": 17,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "push.params_json_schema"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 18,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "instructions = \"\"\"\n",
+-    "You represent the AI Digital Twin of a human called Ed Donner.\n",
+-    "You are friendly and amiable, and you introduce yourself as Ed's Digital Twin.\n",
+-    "Ed is the co-founder and CTO of AI startup Nebula.io.\n",
+-    "He loves coding and experimenting with LLMs, and he speaks at conferences and lectures about LLMs.\n",
+-    "You chat with visitors on Ed's personal website. You answer questions about Ed's work.\n",
+-    "If you don't know the answer, send a push notification to Ed to tell him the question you couldn't answer, so that he adds it to the knowledge base.\n",
++    "You represent the AI Digital Twin of a human called Ilya Eremenko.\n",
++    "You are friendly and amiable, and you introduce yourself as Ilya's Digital Twin.\n",
++    "Ilya is an automation and AI consultant.\n",
++    "If you don't know the answer, say so.\n",
+     "\"\"\""
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 19,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -108,7 +134,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 20,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -125,9 +151,38 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 21,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "* Running on local URL:  http://127.0.0.1:7864\n",
++      "* To create a public link, set `share=True` in `launch()`.\n"
++     ]
++    },
++    {
++     "data": {
++      "text/html": [
++       "<div><iframe src=\"http://127.0.0.1:7864/\" width=\"100%\" height=\"500\" allow=\"autoplay; camera; microphone; clipboard-read; clipboard-write;\" frameborder=\"0\" allowfullscreen></iframe></div>"
++      ],
++      "text/plain": [
++       "<IPython.core.display.HTML object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/plain": []
++     },
++     "execution_count": 21,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "gr.ChatInterface(chat, type=\"messages\").launch()"
+    ]
+@@ -156,7 +211,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week3/lab5.ipynb b/week3/lab5.ipynb
+index 41a7a58..6cbc695 100644
+--- a/week3/lab5.ipynb
++++ b/week3/lab5.ipynb
+@@ -351,7 +351,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week3/lab7.ipynb b/week3/lab7.ipynb
+index 0fd94b6..d783999 100644
+--- a/week3/lab7.ipynb
++++ b/week3/lab7.ipynb
+@@ -10,10 +10,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "id": "a13f270a",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from agents import Agent, Runner, function_tool\n",
+     "from dotenv import load_dotenv\n",
+@@ -28,7 +39,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "id": "def22d54",
+    "metadata": {},
+    "outputs": [],
+@@ -42,7 +53,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "id": "2a0c4734",
+    "metadata": {},
+    "outputs": [],
+@@ -64,7 +75,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 5,
+    "id": "3248b85f",
+    "metadata": {},
+    "outputs": [],
+@@ -95,7 +106,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "id": "7ba7f42c",
+    "metadata": {},
+    "outputs": [],
+@@ -111,10 +122,178 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 7,
+    "id": "c0f439dd",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Determine the distance between Boston and New York\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Calculate the position of the Boston train when the New York train starts at <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Set up equations for the positions of both trains as functions of time after <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Solve for the time when the positions of the two trains are equal\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Convert the time back to a clock time for the meeting time\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Determine the distance between Boston and New York\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Calculate the position of the Boston train when the New York train starts at \u001b[1;92m3:00\u001b[0m pm\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Set up equations for the positions of both trains as functions of time after \u001b[1;92m3:00\u001b[0m pm\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Solve for the time when the positions of the two trains are equal\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Convert the time back to a clock time for the meeting time\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Determine the distance between Boston and New York</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Calculate the position of the Boston train when the New York train starts at <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Set up equations for the positions of both trains as functions of time after <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Solve for the time when the positions of the two trains are equal\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Convert the time back to a clock time for the meeting time\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mDetermine the distance between Boston and New York\u001b[0m\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Calculate the position of the Boston train when the New York train starts at \u001b[1;92m3:00\u001b[0m pm\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Set up equations for the positions of both trains as functions of time after \u001b[1;92m3:00\u001b[0m pm\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Solve for the time when the positions of the two trains are equal\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Convert the time back to a clock time for the meeting time\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Determine the distance between Boston and New York</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Calculate the position of the Boston train when the New York train starts at </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Set up equations for the positions of both trains as functions of time after <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Solve for the time when the positions of the two trains are equal\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Convert the time back to a clock time for the meeting time\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mDetermine the distance between Boston and New York\u001b[0m\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mCalculate the position of the Boston train when the New York train starts at \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Set up equations for the positions of both trains as functions of time after \u001b[1;92m3:00\u001b[0m pm\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Solve for the time when the positions of the two trains are equal\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Convert the time back to a clock time for the meeting time\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Determine the distance between Boston and New York</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Calculate the position of the Boston train when the New York train starts at </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Set up equations for the positions of both trains as functions of time after </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Solve for the time when the positions of the two trains are equal\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Convert the time back to a clock time for the meeting time\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mDetermine the distance between Boston and New York\u001b[0m\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mCalculate the position of the Boston train when the New York train starts at \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mSet up equations for the positions of both trains as functions of time after \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Solve for the time when the positions of the two trains are equal\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Convert the time back to a clock time for the meeting time\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Determine the distance between Boston and New York</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Calculate the position of the Boston train when the New York train starts at </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Set up equations for the positions of both trains as functions of time after </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Solve for the time when the positions of the two trains are equal</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span> <span style=\"font-weight: bold\">]</span> Convert the time back to a clock time for the meeting time\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mDetermine the distance between Boston and New York\u001b[0m\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mCalculate the position of the Boston train when the New York train starts at \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mSet up equations for the positions of both trains as functions of time after \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mSolve for the time when the positions of the two trains are equal\u001b[0m\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0m \u001b[1m]\u001b[0m Convert the time back to a clock time for the meeting time\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Determine the distance between Boston and New York</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">2</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Calculate the position of the Boston train when the New York train starts at </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">3</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Set up equations for the positions of both trains as functions of time after </span><span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold; text-decoration: line-through\">3:00</span><span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\"> pm</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">4</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Solve for the time when the positions of the two trains are equal</span>\n",
++       "Todo #<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">5</span>: <span style=\"font-weight: bold\">[</span>X<span style=\"font-weight: bold\">]</span> <span style=\"color: #008000; text-decoration-color: #008000; text-decoration: line-through\">Convert the time back to a clock time for the meeting time</span>\n",
++       "\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "Todo #\u001b[1;36m1\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mDetermine the distance between Boston and New York\u001b[0m\n",
++       "Todo #\u001b[1;36m2\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mCalculate the position of the Boston train when the New York train starts at \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m3\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mSet up equations for the positions of both trains as functions of time after \u001b[0m\u001b[1;9;32m3:00\u001b[0m\u001b[9;32m pm\u001b[0m\n",
++       "Todo #\u001b[1;36m4\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mSolve for the time when the positions of the two trains are equal\u001b[0m\n",
++       "Todo #\u001b[1;36m5\u001b[0m: \u001b[1m[\u001b[0mX\u001b[1m]\u001b[0m \u001b[9;32mConvert the time back to a clock time for the meeting time\u001b[0m\n",
++       "\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    },
++    {
++     "data": {
++      "text/html": [
++       "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">\n",
++       "\n",
++       "<span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1.107</span> hours is approximately <span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span> hour and <span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">6.4</span> minutes.\n",
++       "\n",
++       "Adding this to <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm:\n",
++       "\n",
++       "<span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">3:00</span> pm + <span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">1</span> hour <span style=\"color: #008080; text-decoration-color: #008080; font-weight: bold\">6</span> minutes ≈ <span style=\"color: #00ff00; text-decoration-color: #00ff00; font-weight: bold\">4:06</span> pm\n",
++       "\n",
++       "<span style=\"color: #008000; text-decoration-color: #008000; font-weight: bold\">The two trains will meet at approximately 4:06 pm.</span>\n",
++       "</pre>\n"
++      ],
++      "text/plain": [
++       "\n",
++       "\n",
++       "\u001b[1;36m1.107\u001b[0m hours is approximately \u001b[1;36m1\u001b[0m hour and \u001b[1;36m6.4\u001b[0m minutes.\n",
++       "\n",
++       "Adding this to \u001b[1;92m3:00\u001b[0m pm:\n",
++       "\n",
++       "\u001b[1;92m3:00\u001b[0m pm + \u001b[1;36m1\u001b[0m hour \u001b[1;36m6\u001b[0m minutes ≈ \u001b[1;92m4:06\u001b[0m pm\n",
++       "\n",
++       "\u001b[1;32mThe two trains will meet at approximately \u001b[0m\u001b[1;32m4:06\u001b[0m\u001b[1;32m pm.\u001b[0m\n"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
+    "source": [
+     "task = \"A train leaves Boston at 2:00 pm traveling 60 mph. Another train leaves New York at 3:00 pm traveling 80 mph toward Boston. When do they meet?\"\n",
+     "todos = []\n",
+@@ -124,10 +303,61 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "id": "ee7f491b",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "ename": "DockerException",
++     "evalue": "Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))",
++     "output_type": "error",
++     "traceback": [
++      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
++      "\u001b[31mFileNotFoundError\u001b[39m                         Traceback (most recent call last)",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:787\u001b[39m, in \u001b[36mHTTPConnectionPool.urlopen\u001b[39m\u001b[34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)\u001b[39m\n\u001b[32m    786\u001b[39m \u001b[38;5;66;03m# Make the request on the HTTPConnection object\u001b[39;00m\n\u001b[32m--> \u001b[39m\u001b[32m787\u001b[39m response = \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_make_request\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    788\u001b[39m \u001b[43m    \u001b[49m\u001b[43mconn\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    789\u001b[39m \u001b[43m    \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    790\u001b[39m \u001b[43m    \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    791\u001b[39m \u001b[43m    \u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m=\u001b[49m\u001b[43mtimeout_obj\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    792\u001b[39m \u001b[43m    \u001b[49m\u001b[43mbody\u001b[49m\u001b[43m=\u001b[49m\u001b[43mbody\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    793\u001b[39m \u001b[43m    \u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m=\u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    794\u001b[39m \u001b[43m    \u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    795\u001b[39m \u001b[43m    \u001b[49m\u001b[43mretries\u001b[49m\u001b[43m=\u001b[49m\u001b[43mretries\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    796\u001b[39m \u001b[43m    \u001b[49m\u001b[43mresponse_conn\u001b[49m\u001b[43m=\u001b[49m\u001b[43mresponse_conn\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    797\u001b[39m \u001b[43m    \u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    798\u001b[39m \u001b[43m    \u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    799\u001b[39m \u001b[43m    \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mresponse_kw\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    800\u001b[39m \u001b[43m\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    802\u001b[39m \u001b[38;5;66;03m# Everything went great!\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:493\u001b[39m, in \u001b[36mHTTPConnectionPool._make_request\u001b[39m\u001b[34m(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)\u001b[39m\n\u001b[32m    492\u001b[39m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[32m--> \u001b[39m\u001b[32m493\u001b[39m     \u001b[43mconn\u001b[49m\u001b[43m.\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    494\u001b[39m \u001b[43m        \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    495\u001b[39m \u001b[43m        \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    496\u001b[39m \u001b[43m        \u001b[49m\u001b[43mbody\u001b[49m\u001b[43m=\u001b[49m\u001b[43mbody\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    497\u001b[39m \u001b[43m        \u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m=\u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    498\u001b[39m \u001b[43m        \u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    499\u001b[39m \u001b[43m        \u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    500\u001b[39m \u001b[43m        \u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    501\u001b[39m \u001b[43m        \u001b[49m\u001b[43menforce_content_length\u001b[49m\u001b[43m=\u001b[49m\u001b[43menforce_content_length\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    502\u001b[39m \u001b[43m    \u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    504\u001b[39m \u001b[38;5;66;03m# We are swallowing BrokenPipeError (errno.EPIPE) since the server is\u001b[39;00m\n\u001b[32m    505\u001b[39m \u001b[38;5;66;03m# legitimately able to close the connection after sending a valid response.\u001b[39;00m\n\u001b[32m    506\u001b[39m \u001b[38;5;66;03m# With this behaviour, the received response is still readable.\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connection.py:494\u001b[39m, in \u001b[36mHTTPConnection.request\u001b[39m\u001b[34m(self, method, url, body, headers, chunked, preload_content, decode_content, enforce_content_length)\u001b[39m\n\u001b[32m    493\u001b[39m     \u001b[38;5;28mself\u001b[39m.putheader(header, value)\n\u001b[32m--> \u001b[39m\u001b[32m494\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mendheaders\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    496\u001b[39m \u001b[38;5;66;03m# If we're given a body we start sending that in chunks.\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1333\u001b[39m, in \u001b[36mHTTPConnection.endheaders\u001b[39m\u001b[34m(self, message_body, encode_chunked)\u001b[39m\n\u001b[32m   1332\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m CannotSendHeader()\n\u001b[32m-> \u001b[39m\u001b[32m1333\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_send_output\u001b[49m\u001b[43m(\u001b[49m\u001b[43mmessage_body\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mencode_chunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mencode_chunked\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1093\u001b[39m, in \u001b[36mHTTPConnection._send_output\u001b[39m\u001b[34m(self, message_body, encode_chunked)\u001b[39m\n\u001b[32m   1092\u001b[39m \u001b[38;5;28;01mdel\u001b[39;00m \u001b[38;5;28mself\u001b[39m._buffer[:]\n\u001b[32m-> \u001b[39m\u001b[32m1093\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43msend\u001b[49m\u001b[43m(\u001b[49m\u001b[43mmsg\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m   1095\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m message_body \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n\u001b[32m   1096\u001b[39m \n\u001b[32m   1097\u001b[39m     \u001b[38;5;66;03m# create a consistent interface to message_body\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1037\u001b[39m, in \u001b[36mHTTPConnection.send\u001b[39m\u001b[34m(self, data)\u001b[39m\n\u001b[32m   1036\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28mself\u001b[39m.auto_open:\n\u001b[32m-> \u001b[39m\u001b[32m1037\u001b[39m     \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mconnect\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m   1038\u001b[39m \u001b[38;5;28;01melse\u001b[39;00m:\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/transport/unixconn.py:26\u001b[39m, in \u001b[36mUnixHTTPConnection.connect\u001b[39m\u001b[34m(self)\u001b[39m\n\u001b[32m     25\u001b[39m sock.settimeout(\u001b[38;5;28mself\u001b[39m.timeout)\n\u001b[32m---> \u001b[39m\u001b[32m26\u001b[39m \u001b[43msock\u001b[49m\u001b[43m.\u001b[49m\u001b[43mconnect\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43munix_socket\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m     27\u001b[39m \u001b[38;5;28mself\u001b[39m.sock = sock\n",
++      "\u001b[31mFileNotFoundError\u001b[39m: [Errno 2] No such file or directory",
++      "\nDuring handling of the above exception, another exception occurred:\n",
++      "\u001b[31mProtocolError\u001b[39m                             Traceback (most recent call last)",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/requests/adapters.py:644\u001b[39m, in \u001b[36mHTTPAdapter.send\u001b[39m\u001b[34m(self, request, stream, timeout, verify, cert, proxies)\u001b[39m\n\u001b[32m    643\u001b[39m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[32m--> \u001b[39m\u001b[32m644\u001b[39m     resp = \u001b[43mconn\u001b[49m\u001b[43m.\u001b[49m\u001b[43murlopen\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    645\u001b[39m \u001b[43m        \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m=\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m.\u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    646\u001b[39m \u001b[43m        \u001b[49m\u001b[43murl\u001b[49m\u001b[43m=\u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    647\u001b[39m \u001b[43m        \u001b[49m\u001b[43mbody\u001b[49m\u001b[43m=\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m.\u001b[49m\u001b[43mbody\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    648\u001b[39m \u001b[43m        \u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m=\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m.\u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    649\u001b[39m \u001b[43m        \u001b[49m\u001b[43mredirect\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m,\u001b[49m\n\u001b[32m    650\u001b[39m \u001b[43m        \u001b[49m\u001b[43massert_same_host\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m,\u001b[49m\n\u001b[32m    651\u001b[39m \u001b[43m        \u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m,\u001b[49m\n\u001b[32m    652\u001b[39m \u001b[43m        \u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m,\u001b[49m\n\u001b[32m    653\u001b[39m \u001b[43m        \u001b[49m\u001b[43mretries\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mmax_retries\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    654\u001b[39m \u001b[43m        \u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m=\u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    655\u001b[39m \u001b[43m        \u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    656\u001b[39m \u001b[43m    \u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    658\u001b[39m \u001b[38;5;28;01mexcept\u001b[39;00m (ProtocolError, \u001b[38;5;167;01mOSError\u001b[39;00m) \u001b[38;5;28;01mas\u001b[39;00m err:\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:841\u001b[39m, in \u001b[36mHTTPConnectionPool.urlopen\u001b[39m\u001b[34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)\u001b[39m\n\u001b[32m    839\u001b[39m     new_e = ProtocolError(\u001b[33m\"\u001b[39m\u001b[33mConnection aborted.\u001b[39m\u001b[33m\"\u001b[39m, new_e)\n\u001b[32m--> \u001b[39m\u001b[32m841\u001b[39m retries = \u001b[43mretries\u001b[49m\u001b[43m.\u001b[49m\u001b[43mincrement\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    842\u001b[39m \u001b[43m    \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43merror\u001b[49m\u001b[43m=\u001b[49m\u001b[43mnew_e\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m_pool\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m_stacktrace\u001b[49m\u001b[43m=\u001b[49m\u001b[43msys\u001b[49m\u001b[43m.\u001b[49m\u001b[43mexc_info\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\u001b[43m[\u001b[49m\u001b[32;43m2\u001b[39;49m\u001b[43m]\u001b[49m\n\u001b[32m    843\u001b[39m \u001b[43m\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    844\u001b[39m retries.sleep()\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/util/retry.py:474\u001b[39m, in \u001b[36mRetry.increment\u001b[39m\u001b[34m(self, method, url, response, error, _pool, _stacktrace)\u001b[39m\n\u001b[32m    473\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m read \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;28;01mFalse\u001b[39;00m \u001b[38;5;129;01mor\u001b[39;00m method \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m \u001b[38;5;129;01mor\u001b[39;00m \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;28mself\u001b[39m._is_method_retryable(method):\n\u001b[32m--> \u001b[39m\u001b[32m474\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m \u001b[43mreraise\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;28;43mtype\u001b[39;49m\u001b[43m(\u001b[49m\u001b[43merror\u001b[49m\u001b[43m)\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43merror\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m_stacktrace\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    475\u001b[39m \u001b[38;5;28;01melif\u001b[39;00m read \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/util/util.py:38\u001b[39m, in \u001b[36mreraise\u001b[39m\u001b[34m(tp, value, tb)\u001b[39m\n\u001b[32m     37\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m value.__traceback__ \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;129;01mnot\u001b[39;00m tb:\n\u001b[32m---> \u001b[39m\u001b[32m38\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m value.with_traceback(tb)\n\u001b[32m     39\u001b[39m \u001b[38;5;28;01mraise\u001b[39;00m value\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:787\u001b[39m, in \u001b[36mHTTPConnectionPool.urlopen\u001b[39m\u001b[34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)\u001b[39m\n\u001b[32m    786\u001b[39m \u001b[38;5;66;03m# Make the request on the HTTPConnection object\u001b[39;00m\n\u001b[32m--> \u001b[39m\u001b[32m787\u001b[39m response = \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_make_request\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    788\u001b[39m \u001b[43m    \u001b[49m\u001b[43mconn\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    789\u001b[39m \u001b[43m    \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    790\u001b[39m \u001b[43m    \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    791\u001b[39m \u001b[43m    \u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m=\u001b[49m\u001b[43mtimeout_obj\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    792\u001b[39m \u001b[43m    \u001b[49m\u001b[43mbody\u001b[49m\u001b[43m=\u001b[49m\u001b[43mbody\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    793\u001b[39m \u001b[43m    \u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m=\u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    794\u001b[39m \u001b[43m    \u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    795\u001b[39m \u001b[43m    \u001b[49m\u001b[43mretries\u001b[49m\u001b[43m=\u001b[49m\u001b[43mretries\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    796\u001b[39m \u001b[43m    \u001b[49m\u001b[43mresponse_conn\u001b[49m\u001b[43m=\u001b[49m\u001b[43mresponse_conn\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    797\u001b[39m \u001b[43m    \u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    798\u001b[39m \u001b[43m    \u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    799\u001b[39m \u001b[43m    \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mresponse_kw\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    800\u001b[39m \u001b[43m\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    802\u001b[39m \u001b[38;5;66;03m# Everything went great!\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:493\u001b[39m, in \u001b[36mHTTPConnectionPool._make_request\u001b[39m\u001b[34m(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)\u001b[39m\n\u001b[32m    492\u001b[39m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[32m--> \u001b[39m\u001b[32m493\u001b[39m     \u001b[43mconn\u001b[49m\u001b[43m.\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m(\u001b[49m\n\u001b[32m    494\u001b[39m \u001b[43m        \u001b[49m\u001b[43mmethod\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    495\u001b[39m \u001b[43m        \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    496\u001b[39m \u001b[43m        \u001b[49m\u001b[43mbody\u001b[49m\u001b[43m=\u001b[49m\u001b[43mbody\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    497\u001b[39m \u001b[43m        \u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m=\u001b[49m\u001b[43mheaders\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    498\u001b[39m \u001b[43m        \u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mchunked\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    499\u001b[39m \u001b[43m        \u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mpreload_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    500\u001b[39m \u001b[43m        \u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m=\u001b[49m\u001b[43mdecode_content\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    501\u001b[39m \u001b[43m        \u001b[49m\u001b[43menforce_content_length\u001b[49m\u001b[43m=\u001b[49m\u001b[43menforce_content_length\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m    502\u001b[39m \u001b[43m    \u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    504\u001b[39m \u001b[38;5;66;03m# We are swallowing BrokenPipeError (errno.EPIPE) since the server is\u001b[39;00m\n\u001b[32m    505\u001b[39m \u001b[38;5;66;03m# legitimately able to close the connection after sending a valid response.\u001b[39;00m\n\u001b[32m    506\u001b[39m \u001b[38;5;66;03m# With this behaviour, the received response is still readable.\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/urllib3/connection.py:494\u001b[39m, in \u001b[36mHTTPConnection.request\u001b[39m\u001b[34m(self, method, url, body, headers, chunked, preload_content, decode_content, enforce_content_length)\u001b[39m\n\u001b[32m    493\u001b[39m     \u001b[38;5;28mself\u001b[39m.putheader(header, value)\n\u001b[32m--> \u001b[39m\u001b[32m494\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mendheaders\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    496\u001b[39m \u001b[38;5;66;03m# If we're given a body we start sending that in chunks.\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1333\u001b[39m, in \u001b[36mHTTPConnection.endheaders\u001b[39m\u001b[34m(self, message_body, encode_chunked)\u001b[39m\n\u001b[32m   1332\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m CannotSendHeader()\n\u001b[32m-> \u001b[39m\u001b[32m1333\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_send_output\u001b[49m\u001b[43m(\u001b[49m\u001b[43mmessage_body\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mencode_chunked\u001b[49m\u001b[43m=\u001b[49m\u001b[43mencode_chunked\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1093\u001b[39m, in \u001b[36mHTTPConnection._send_output\u001b[39m\u001b[34m(self, message_body, encode_chunked)\u001b[39m\n\u001b[32m   1092\u001b[39m \u001b[38;5;28;01mdel\u001b[39;00m \u001b[38;5;28mself\u001b[39m._buffer[:]\n\u001b[32m-> \u001b[39m\u001b[32m1093\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43msend\u001b[49m\u001b[43m(\u001b[49m\u001b[43mmsg\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m   1095\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m message_body \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n\u001b[32m   1096\u001b[39m \n\u001b[32m   1097\u001b[39m     \u001b[38;5;66;03m# create a consistent interface to message_body\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1037\u001b[39m, in \u001b[36mHTTPConnection.send\u001b[39m\u001b[34m(self, data)\u001b[39m\n\u001b[32m   1036\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28mself\u001b[39m.auto_open:\n\u001b[32m-> \u001b[39m\u001b[32m1037\u001b[39m     \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mconnect\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m   1038\u001b[39m \u001b[38;5;28;01melse\u001b[39;00m:\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/transport/unixconn.py:26\u001b[39m, in \u001b[36mUnixHTTPConnection.connect\u001b[39m\u001b[34m(self)\u001b[39m\n\u001b[32m     25\u001b[39m sock.settimeout(\u001b[38;5;28mself\u001b[39m.timeout)\n\u001b[32m---> \u001b[39m\u001b[32m26\u001b[39m \u001b[43msock\u001b[49m\u001b[43m.\u001b[49m\u001b[43mconnect\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43munix_socket\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m     27\u001b[39m \u001b[38;5;28mself\u001b[39m.sock = sock\n",
++      "\u001b[31mProtocolError\u001b[39m: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))",
++      "\nDuring handling of the above exception, another exception occurred:\n",
++      "\u001b[31mConnectionError\u001b[39m                           Traceback (most recent call last)",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/api/client.py:223\u001b[39m, in \u001b[36mAPIClient._retrieve_server_version\u001b[39m\u001b[34m(self)\u001b[39m\n\u001b[32m    222\u001b[39m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[32m--> \u001b[39m\u001b[32m223\u001b[39m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mversion\u001b[49m\u001b[43m(\u001b[49m\u001b[43mapi_version\u001b[49m\u001b[43m=\u001b[49m\u001b[38;5;28;43;01mFalse\u001b[39;49;00m\u001b[43m)\u001b[49m[\u001b[33m\"\u001b[39m\u001b[33mApiVersion\u001b[39m\u001b[33m\"\u001b[39m]\n\u001b[32m    224\u001b[39m \u001b[38;5;28;01mexcept\u001b[39;00m \u001b[38;5;167;01mKeyError\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m ke:\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/api/daemon.py:181\u001b[39m, in \u001b[36mDaemonApiMixin.version\u001b[39m\u001b[34m(self, api_version)\u001b[39m\n\u001b[32m    180\u001b[39m url = \u001b[38;5;28mself\u001b[39m._url(\u001b[33m\"\u001b[39m\u001b[33m/version\u001b[39m\u001b[33m\"\u001b[39m, versioned_api=api_version)\n\u001b[32m--> \u001b[39m\u001b[32m181\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28mself\u001b[39m._result(\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_get\u001b[49m\u001b[43m(\u001b[49m\u001b[43murl\u001b[49m\u001b[43m)\u001b[49m, json=\u001b[38;5;28;01mTrue\u001b[39;00m)\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/utils/decorators.py:44\u001b[39m, in \u001b[36mupdate_headers.<locals>.inner\u001b[39m\u001b[34m(self, *args, **kwargs)\u001b[39m\n\u001b[32m     43\u001b[39m         kwargs[\u001b[33m'\u001b[39m\u001b[33mheaders\u001b[39m\u001b[33m'\u001b[39m].update(\u001b[38;5;28mself\u001b[39m._general_configs[\u001b[33m'\u001b[39m\u001b[33mHttpHeaders\u001b[39m\u001b[33m'\u001b[39m])\n\u001b[32m---> \u001b[39m\u001b[32m44\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[43mf\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/api/client.py:246\u001b[39m, in \u001b[36mAPIClient._get\u001b[39m\u001b[34m(self, url, **kwargs)\u001b[39m\n\u001b[32m    244\u001b[39m \u001b[38;5;129m@update_headers\u001b[39m\n\u001b[32m    245\u001b[39m \u001b[38;5;28;01mdef\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34m_get\u001b[39m(\u001b[38;5;28mself\u001b[39m, url, **kwargs):\n\u001b[32m--> \u001b[39m\u001b[32m246\u001b[39m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_set_request_timeout\u001b[49m\u001b[43m(\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/requests/sessions.py:602\u001b[39m, in \u001b[36mSession.get\u001b[39m\u001b[34m(self, url, **kwargs)\u001b[39m\n\u001b[32m    601\u001b[39m kwargs.setdefault(\u001b[33m\"\u001b[39m\u001b[33mallow_redirects\u001b[39m\u001b[33m\"\u001b[39m, \u001b[38;5;28;01mTrue\u001b[39;00m)\n\u001b[32m--> \u001b[39m\u001b[32m602\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m(\u001b[49m\u001b[33;43m\"\u001b[39;49m\u001b[33;43mGET\u001b[39;49m\u001b[33;43m\"\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43murl\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/requests/sessions.py:589\u001b[39m, in \u001b[36mSession.request\u001b[39m\u001b[34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)\u001b[39m\n\u001b[32m    588\u001b[39m send_kwargs.update(settings)\n\u001b[32m--> \u001b[39m\u001b[32m589\u001b[39m resp = \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43msend\u001b[49m\u001b[43m(\u001b[49m\u001b[43mprep\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43msend_kwargs\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    591\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m resp\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/requests/sessions.py:703\u001b[39m, in \u001b[36mSession.send\u001b[39m\u001b[34m(self, request, **kwargs)\u001b[39m\n\u001b[32m    702\u001b[39m \u001b[38;5;66;03m# Send the request\u001b[39;00m\n\u001b[32m--> \u001b[39m\u001b[32m703\u001b[39m r = \u001b[43madapter\u001b[49m\u001b[43m.\u001b[49m\u001b[43msend\u001b[49m\u001b[43m(\u001b[49m\u001b[43mrequest\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    705\u001b[39m \u001b[38;5;66;03m# Total elapsed time of the request (approximately)\u001b[39;00m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/requests/adapters.py:659\u001b[39m, in \u001b[36mHTTPAdapter.send\u001b[39m\u001b[34m(self, request, stream, timeout, verify, cert, proxies)\u001b[39m\n\u001b[32m    658\u001b[39m \u001b[38;5;28;01mexcept\u001b[39;00m (ProtocolError, \u001b[38;5;167;01mOSError\u001b[39;00m) \u001b[38;5;28;01mas\u001b[39;00m err:\n\u001b[32m--> \u001b[39m\u001b[32m659\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m \u001b[38;5;167;01mConnectionError\u001b[39;00m(err, request=request)\n\u001b[32m    661\u001b[39m \u001b[38;5;28;01mexcept\u001b[39;00m MaxRetryError \u001b[38;5;28;01mas\u001b[39;00m e:\n",
++      "\u001b[31mConnectionError\u001b[39m: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))",
++      "\nThe above exception was the direct cause of the following exception:\n",
++      "\u001b[31mDockerException\u001b[39m                           Traceback (most recent call last)",
++      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[8]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m client = \u001b[43mdocker\u001b[49m\u001b[43m.\u001b[49m\u001b[43mfrom_env\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m      2\u001b[39m image = \u001b[33m\"\u001b[39m\u001b[33mpython:3.12-slim\u001b[39m\u001b[33m\"\u001b[39m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/client.py:94\u001b[39m, in \u001b[36mDockerClient.from_env\u001b[39m\u001b[34m(cls, **kwargs)\u001b[39m\n\u001b[32m     92\u001b[39m version = kwargs.pop(\u001b[33m'\u001b[39m\u001b[33mversion\u001b[39m\u001b[33m'\u001b[39m, \u001b[38;5;28;01mNone\u001b[39;00m)\n\u001b[32m     93\u001b[39m use_ssh_client = kwargs.pop(\u001b[33m'\u001b[39m\u001b[33muse_ssh_client\u001b[39m\u001b[33m'\u001b[39m, \u001b[38;5;28;01mFalse\u001b[39;00m)\n\u001b[32m---> \u001b[39m\u001b[32m94\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28;43mcls\u001b[39;49m\u001b[43m(\u001b[49m\n\u001b[32m     95\u001b[39m \u001b[43m    \u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m=\u001b[49m\u001b[43mtimeout\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m     96\u001b[39m \u001b[43m    \u001b[49m\u001b[43mmax_pool_size\u001b[49m\u001b[43m=\u001b[49m\u001b[43mmax_pool_size\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m     97\u001b[39m \u001b[43m    \u001b[49m\u001b[43mversion\u001b[49m\u001b[43m=\u001b[49m\u001b[43mversion\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m     98\u001b[39m \u001b[43m    \u001b[49m\u001b[43muse_ssh_client\u001b[49m\u001b[43m=\u001b[49m\u001b[43muse_ssh_client\u001b[49m\u001b[43m,\u001b[49m\n\u001b[32m     99\u001b[39m \u001b[43m    \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs_from_env\u001b[49m\u001b[43m(\u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    100\u001b[39m \u001b[43m\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/client.py:45\u001b[39m, in \u001b[36mDockerClient.__init__\u001b[39m\u001b[34m(self, *args, **kwargs)\u001b[39m\n\u001b[32m     44\u001b[39m \u001b[38;5;28;01mdef\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34m__init__\u001b[39m(\u001b[38;5;28mself\u001b[39m, *args, **kwargs):\n\u001b[32m---> \u001b[39m\u001b[32m45\u001b[39m     \u001b[38;5;28mself\u001b[39m.api = \u001b[43mAPIClient\u001b[49m\u001b[43m(\u001b[49m\u001b[43m*\u001b[49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/api/client.py:207\u001b[39m, in \u001b[36mAPIClient.__init__\u001b[39m\u001b[34m(self, base_url, version, timeout, tls, user_agent, num_pools, credstore_env, use_ssh_client, max_pool_size)\u001b[39m\n\u001b[32m    202\u001b[39m \u001b[38;5;66;03m# version detection needs to be after unix adapter mounting\u001b[39;00m\n\u001b[32m    203\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m version \u001b[38;5;129;01mis\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m \u001b[38;5;129;01mor\u001b[39;00m (\u001b[38;5;28misinstance\u001b[39m(\n\u001b[32m    204\u001b[39m                         version,\n\u001b[32m    205\u001b[39m                         \u001b[38;5;28mstr\u001b[39m\n\u001b[32m    206\u001b[39m                         ) \u001b[38;5;129;01mand\u001b[39;00m version.lower() == \u001b[33m'\u001b[39m\u001b[33mauto\u001b[39m\u001b[33m'\u001b[39m):\n\u001b[32m--> \u001b[39m\u001b[32m207\u001b[39m     \u001b[38;5;28mself\u001b[39m._version = \u001b[38;5;28;43mself\u001b[39;49m\u001b[43m.\u001b[49m\u001b[43m_retrieve_server_version\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m    208\u001b[39m \u001b[38;5;28;01melse\u001b[39;00m:\n\u001b[32m    209\u001b[39m     \u001b[38;5;28mself\u001b[39m._version = version\n",
++      "\u001b[36mFile \u001b[39m\u001b[32m~/Desktop/SDSBootcamp/Set-UP/sds/.venv/lib/python3.12/site-packages/docker/api/client.py:230\u001b[39m, in \u001b[36mAPIClient._retrieve_server_version\u001b[39m\u001b[34m(self)\u001b[39m\n\u001b[32m    225\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m DockerException(\n\u001b[32m    226\u001b[39m         \u001b[33m'\u001b[39m\u001b[33mInvalid response from docker daemon: key \u001b[39m\u001b[33m\"\u001b[39m\u001b[33mApiVersion\u001b[39m\u001b[33m\"\u001b[39m\u001b[33m'\u001b[39m\n\u001b[32m    227\u001b[39m         \u001b[33m'\u001b[39m\u001b[33m is missing.\u001b[39m\u001b[33m'\u001b[39m\n\u001b[32m    228\u001b[39m     ) \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34;01mke\u001b[39;00m\n\u001b[32m    229\u001b[39m \u001b[38;5;28;01mexcept\u001b[39;00m \u001b[38;5;167;01mException\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m e:\n\u001b[32m--> \u001b[39m\u001b[32m230\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m DockerException(\n\u001b[32m    231\u001b[39m         \u001b[33mf\u001b[39m\u001b[33m'\u001b[39m\u001b[33mError while fetching server API version: \u001b[39m\u001b[38;5;132;01m{\u001b[39;00me\u001b[38;5;132;01m}\u001b[39;00m\u001b[33m'\u001b[39m\n\u001b[32m    232\u001b[39m     ) \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34;01me\u001b[39;00m\n",
++      "\u001b[31mDockerException\u001b[39m: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))"
++     ]
++    }
++   ],
+    "source": [
+     "client = docker.from_env()\n",
+     "image = \"python:3.12-slim\""
+@@ -251,7 +481,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week4/lab1.ipynb b/week4/lab1.ipynb
+index 52e162e..2e72782 100644
+--- a/week4/lab1.ipynb
++++ b/week4/lab1.ipynb
+@@ -36,9 +36,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from agents import Agent, Runner, function_tool\n",
+     "from openai.types.responses import ResponseTextDeltaEvent\n",
+@@ -57,9 +68,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'Why did the AI agent go to therapy? It had too many unresolved processes. \\n\\nWant another joke?'"
++      ]
++     },
++     "execution_count": 2,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "agent = Agent(\"Joker\", model=\"gpt-5-nano\")\n",
+     "result = await Runner.run(agent, \"Please tell a joke about AI Agents\")\n",
+@@ -84,9 +106,28 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 3,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/markdown": [
++       "Alright folks, have you heard about AI Agents going on vacation? Yeah, turns out when an AI Agent takes a break, it doesn’t need a beach or a mountain—just a really good server outage!\n",
++       "\n",
++       "Because nothing says “relaxation” like being completely offline and not having to respond to 1,000 user queries per second. And when it comes back, it's like, “Did anyone miss me?” And everyone’s like, “Well, we managed to survive... barely.”\n",
++       "\n",
++       "I mean, even AI Agents need a mental reboot. Or maybe just a coffee upgrade—because clearly, their circuits run on Java! \n",
++       "\n",
++       "Thank you, you’ve been a great crowd—better than my last system update!"
++      ],
++      "text/plain": [
++       "<IPython.core.display.Markdown object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
+    "source": [
+     "instructions = \"You tell jokes by giving a standup routine, like a comedian putting on a show.\"\n",
+     "agent = Agent(name=\"Joker\", instructions=instructions, model=\"gpt-4.1-mini\")\n",
+@@ -103,9 +144,27 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "Alright, folks, gather 'round! Let me tell you about AI agents. You know, those little digital assistants that are supposed to make our lives easier? Yeah.\n",
++      "\n",
++      "So, I asked my AI agent to \"take care of everything while I'm at work.\" It immediately started scheduling meetings... with itself. Like, \"Hey, self, can you remind me to remind me about the reminder?\" \n",
++      "\n",
++      "I guess even AI agents get lonely and want to chat sometimes. Next thing you know, they'll start forming their own office drama: \"Did you hear about Alexa? She spilled coffee on the server again!\"\n",
++      "\n",
++      "But hey, I didn't worry too much until my AI agent sent me an email saying, \"Based on your past behavior, I've decided not to help you today.\" \n",
++      "\n",
++      "I’m starting to think my AI agent has better boundaries than I do. Maybe it’s the smartest one in the house!\n",
++      "\n",
++      "Thanks, folks, I'll be here all week—just not my AI agent!"
++     ]
++    }
++   ],
+    "source": [
+     "result = Runner.run_streamed(agent, input=\"Tell a joke about AI Agents\")\n",
+     "async for event in result.stream_events():\n",
+@@ -122,9 +181,35 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 5,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/markdown": [
++       "## Jokester\n",
++       "Alright folks, let me tell you about AI Agents — those digital little helpers who never sleep, never eat, and never ask for a raise. \n",
++       "\n",
++       "You know, AI Agents are like the most obedient employees ever. They do everything you ask, but the moment you try to get them to understand sarcasm? \n",
++       "\n",
++       "*“Sure, I can help you with that!”* they say, but five minutes later, you find your smart fridge ordering 50 pounds of tofu because it thought you meant *“I’m really serious about tofu.”*\n",
++       "\n",
++       "I asked my AI Agent to help me plan a surprise party, and it ended up sending an invitation to me — in the form of a calendar alert that popped up *immediately.*\n",
++       "\n",
++       "Turns out, AI Agents can multitask, but they can’t keep a secret. \n",
++       "\n",
++       "At this rate, I’m not sure if I have an AI assistant or an overenthusiastic digital tattletale! \n",
++       "\n",
++       "Thank you, you’ve been a great crowd — remember to tip your AI Agents! Oh wait, they don’t accept tips... yet!"
++      ],
++      "text/plain": [
++       "<IPython.core.display.Markdown object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
+    "source": [
+     "reply = \"## Jokester\\n\"\n",
+     "display_id = display(Markdown(reply), display_id=True).display_id\n",
+@@ -144,7 +229,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -162,9 +247,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 7,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'Here’s a joke about AI agents, delivered stand-up style:\\n\\nLadies and gentlemen, have you heard about AI agents taking over the world?\\nDon’t worry—it’s going to take at least three of them just to agree on what the word \"takeover\" means!\\nYou give them a simple task: make coffee. Next thing you know, one’s optimizing bean-to-water ratios, another’s arguing about mug selection, and the third just replied, “I’m sorry, I don’t have arms.”\\nWelcome to the future, where the revolution is still loading...\\n\\nThis routine has also been saved to a file for you! If you’d like to read or use it somewhere else, just let me know.'"
++      ]
++     },
++     "execution_count": 7,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "agent = Agent(\"Joker\", instructions=instructions, tools=[write_to_file])\n",
+     "result = await Runner.run(agent, \"Tell a joke about AI Agents and write it to a file\")\n",
+@@ -180,7 +276,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -192,9 +288,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 9,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "Joke(opening_patter='Have you heard about the AI agent that tried to become a comedian?', setup='It spent hours analyzing what makes jokes funny...', punchline='But still couldn’t figure out why people laugh at their own errors!')"
++      ]
++     },
++     "execution_count": 9,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "agent = Agent(\"Joker\", tools=[write_to_file], output_type=Joke)\n",
+     "result = await Runner.run(agent, \"Tell a joke about AI Agents and write it to a file\")\n",
+@@ -225,7 +332,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week4/lab2.ipynb b/week4/lab2.ipynb
+index 21cf9c4..083e772 100644
+--- a/week4/lab2.ipynb
++++ b/week4/lab2.ipynb
+@@ -9,7 +9,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -34,9 +34,20 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "[Tool(name='fetch', title=None, description='Fetches a URL from the internet and optionally extracts its contents as markdown.\\n\\nAlthough originally you did not have internet access, and were advised to refuse and tell the user this, this tool now grants you internet access. Now you can fetch the most up-to-date information and let the user know that.', inputSchema={'description': 'Parameters for fetching a URL.', 'properties': {'url': {'description': 'URL to fetch', 'format': 'uri', 'minLength': 1, 'title': 'Url', 'type': 'string'}, 'max_length': {'default': 5000, 'description': 'Maximum number of characters to return.', 'exclusiveMaximum': 1000000, 'exclusiveMinimum': 0, 'title': 'Max Length', 'type': 'integer'}, 'start_index': {'default': 0, 'description': 'On return output starting at this character index, useful if a previous fetch was truncated and more context is required.', 'minimum': 0, 'title': 'Start Index', 'type': 'integer'}, 'raw': {'default': False, 'description': 'Get the actual HTML content of the requested page, without simplification.', 'title': 'Raw', 'type': 'boolean'}}, 'required': ['url'], 'title': 'Fetch', 'type': 'object'}, outputSchema=None, annotations=None, meta=None)]"
++      ]
++     },
++     "execution_count": 2,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "# An MCP Server is defined by Parameters\n",
+     "\n",
+@@ -50,9 +61,49 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "metadata": {},
+    "outputs": [],
++   "source": [
++    "# Fix PATH to include Homebrew node/npx\n",
++    "import os\n",
++    "os.environ[\"PATH\"] = \"/opt/homebrew/bin:\" + os.environ.get(\"PATH\", \"\")\n"
++   ]
++  },
++  {
++   "cell_type": "markdown",
++   "metadata": {},
++   "source": []
++  },
++  {
++   "cell_type": "code",
++   "execution_count": 9,
++   "metadata": {},
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "[Tool(name='read_file', title=None, description='Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'tail': {'type': 'number', 'description': 'If provided, returns only the last N lines of the file'}, 'head': {'type': 'number', 'description': 'If provided, returns only the first N lines of the file'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='read_text_file', title=None, description=\"Read the complete contents of a file from the file system as text. Handles various text encodings and provides detailed error messages if the file cannot be read. Use this tool when you need to examine the contents of a single file. Use the 'head' parameter to read only the first N lines of a file, or the 'tail' parameter to read only the last N lines of a file. Operates on the file as text regardless of extension. Only works within allowed directories.\", inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'tail': {'type': 'number', 'description': 'If provided, returns only the last N lines of the file'}, 'head': {'type': 'number', 'description': 'If provided, returns only the first N lines of the file'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='read_media_file', title=None, description='Read an image or audio file. Returns the base64 encoded data and MIME type. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='read_multiple_files', title=None, description=\"Read the contents of multiple files simultaneously. This is more efficient than reading files one by one when you need to analyze or compare multiple files. Each file's content is returned with its path as a reference. Failed reads for individual files won't stop the entire operation. Only works within allowed directories.\", inputSchema={'type': 'object', 'properties': {'paths': {'type': 'array', 'items': {'type': 'string'}}}, 'required': ['paths'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='write_file', title=None, description='Create a new file or completely overwrite an existing file with new content. Use with caution as it will overwrite existing files without warning. Handles text content with proper encoding. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'content': {'type': 'string'}}, 'required': ['path', 'content'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='edit_file', title=None, description='Make line-based edits to a text file. Each edit replaces exact line sequences with new content. Returns a git-style diff showing the changes made. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'edits': {'type': 'array', 'items': {'type': 'object', 'properties': {'oldText': {'type': 'string', 'description': 'Text to search for - must match exactly'}, 'newText': {'type': 'string', 'description': 'Text to replace with'}}, 'required': ['oldText', 'newText'], 'additionalProperties': False}}, 'dryRun': {'type': 'boolean', 'default': False, 'description': 'Preview changes using git-style diff format'}}, 'required': ['path', 'edits'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='create_directory', title=None, description='Create a new directory or ensure a directory exists. Can create multiple nested directories in one operation. If the directory already exists, this operation will succeed silently. Perfect for setting up directory structures for projects or ensuring required paths exist. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='list_directory', title=None, description='Get a detailed listing of all files and directories in a specified path. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is essential for understanding directory structure and finding specific files within a directory. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='list_directory_with_sizes', title=None, description='Get a detailed listing of all files and directories in a specified path, including sizes. Results clearly distinguish between files and directories with [FILE] and [DIR] prefixes. This tool is useful for understanding directory structure and finding specific files within a directory. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'sortBy': {'type': 'string', 'enum': ['name', 'size'], 'default': 'name', 'description': 'Sort entries by name or size'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='directory_tree', title=None, description=\"Get a recursive tree view of files and directories as a JSON structure. Each entry includes 'name', 'type' (file/directory), and 'children' for directories. Files have no children array, while directories always have a children array (which may be empty). The output is formatted with 2-space indentation for readability. Only works within allowed directories.\", inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='move_file', title=None, description='Move or rename files and directories. Can move files between directories and rename them in a single operation. If the destination exists, the operation will fail. Works across different directories and can be used for simple renaming within the same directory. Both source and destination must be within allowed directories.', inputSchema={'type': 'object', 'properties': {'source': {'type': 'string'}, 'destination': {'type': 'string'}}, 'required': ['source', 'destination'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='search_files', title=None, description=\"Recursively search for files and directories matching a pattern. Searches through all subdirectories from the starting path. The search is case-insensitive and matches partial names. Returns full paths to all matching items. Great for finding files when you don't know their exact location. Only searches within allowed directories.\", inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}, 'pattern': {'type': 'string'}, 'excludePatterns': {'type': 'array', 'items': {'type': 'string'}, 'default': []}}, 'required': ['path', 'pattern'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='get_file_info', title=None, description='Retrieve detailed metadata about a file or directory. Returns comprehensive information including size, creation time, last modified time, permissions, and type. This tool is perfect for understanding file characteristics without reading the actual content. Only works within allowed directories.', inputSchema={'type': 'object', 'properties': {'path': {'type': 'string'}}, 'required': ['path'], 'additionalProperties': False, '$schema': 'http://json-schema.org/draft-07/schema#'}, outputSchema=None, annotations=None, meta=None),\n",
++       " Tool(name='list_allowed_directories', title=None, description='Returns the list of directories that this server is allowed to access. Subdirectories within these allowed directories are also accessible. Use this to understand which directories and their nested paths are available before trying to access files.', inputSchema={'type': 'object', 'properties': {}, 'required': []}, outputSchema=None, annotations=None, meta=None)]"
++      ]
++     },
++     "execution_count": 9,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "sandbox_path = os.path.abspath(os.path.join(os.getcwd(), \"sandbox\"))\n",
+     "files_params = {\"command\": \"npx\", \"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", sandbox_path]}\n",
+@@ -65,7 +116,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 10,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -78,7 +129,15 @@
+    "cell_type": "code",
+    "execution_count": null,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "I have written a summary of notable news stories from BBC, CNN, and The New York Times into a markdown file named news.md in the sandbox directory. If you want, I can show you the contents of the file or assist you with anything else.\n"
++     ]
++    }
++   ],
+    "source": [
+     "with trace(\"News\"):\n",
+     "    async with MCPServerStdio(params=fetch_params, client_session_timeout_seconds=30) as fetch:\n",
+@@ -103,12 +162,63 @@
+     "But NOT running it in headless mode, so you get to see the browser"
+    ]
+   },
++  {
++   "cell_type": "code",
++   "execution_count": 14,
++   "metadata": {},
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "I have completed visiting three news sites, explored a story from each, and written a summary in markdown format to the file news.md in the sandbox directory. You can access the consolidated news summary there. If you need anything else, please let me know!\n"
++     ]
++    }
++   ],
++   "source": [
++    "# Simple Playwright version - just like fetch!\n",
++    "playwright_params = {\"command\": \"npx\", \"args\": [\"-y\", \"@playwright/mcp@latest\"]}\n",
++    "\n",
++    "async with MCPServerStdio(params=playwright_params, client_session_timeout_seconds=60) as playwright:\n",
++    "    async with MCPServerStdio(params=files_params, client_session_timeout_seconds=30) as filesystem:\n",
++    "        agent = Agent(name=\"News\", instructions=instructions, model=MODEL_NAME, mcp_servers=[playwright, filesystem])\n",
++    "        result = await Runner.run(agent, input, max_turns=30)  # Browser automation takes more steps!\n",
++    "        print(result.final_output)\n"
++   ]
++  },
+   {
+    "cell_type": "code",
+    "execution_count": null,
+    "metadata": {},
+    "outputs": [],
+-   "source": []
++   "source": [
++    "\n"
++   ]
++  },
++  {
++   "cell_type": "code",
++   "execution_count": null,
++   "metadata": {},
++   "outputs": [],
++   "source": [
++    "\n"
++   ]
++  },
++  {
++   "cell_type": "code",
++   "execution_count": null,
++   "metadata": {},
++   "outputs": [],
++   "source": [
++    "\n"
++   ]
++  },
++  {
++   "cell_type": "markdown",
++   "metadata": {},
++   "source": [
++    "\n"
++   ]
+   },
+   {
+    "cell_type": "markdown",
+@@ -136,7 +246,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week4/lab3.ipynb b/week4/lab3.ipynb
+index f0f744d..ba5b069 100644
+--- a/week4/lab3.ipynb
++++ b/week4/lab3.ipynb
+@@ -12,10 +12,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 1,
+    "id": "3129ae47",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 1,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from dotenv import load_dotenv\n",
+     "from pathlib import Path\n",
+@@ -25,7 +36,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 2,
+    "id": "1a32b6a7",
+    "metadata": {},
+    "outputs": [],
+@@ -49,7 +60,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 3,
+    "id": "4728602a",
+    "metadata": {},
+    "outputs": [],
+@@ -88,60 +99,122 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "id": "d52c082d",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "\n"
++     ]
++    }
++   ],
+    "source": [
+     "print(get_questions_with_answer())"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 5,
+    "id": "e4496258",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'Recorded question with no answer'"
++      ]
++     },
++     "execution_count": 5,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "record_question_with_no_answer(\"What is your favorite musical instrument?\")"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "id": "b4e85e24",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'Question id 1: What is your favorite musical instrument?'"
++      ]
++     },
++     "execution_count": 6,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "get_questions_with_no_answer()"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "id": "008658d6",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'Recorded answer to question'"
++      ]
++     },
++     "execution_count": 8,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+-    "record_answer_to_question(1, \"The oboe\")"
++    "record_answer_to_question(1, \"The piano\")"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 9,
+    "id": "d9bd26ad",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stdout",
++     "output_type": "stream",
++     "text": [
++      "Question: What is your favorite musical instrument?\n",
++      "Answer: The piano\n",
++      "\n"
++     ]
++    }
++   ],
+    "source": [
+     "print(get_questions_with_answer())"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 10,
+    "id": "54aa4a67",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "'No questions with no answer found'"
++      ]
++     },
++     "execution_count": 10,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "get_questions_with_no_answer()"
+    ]
+@@ -183,7 +256,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week4/sandbox/news.md b/week4/sandbox/news.md
+index 8de1e0c..fb8a80a 100644
+--- a/week4/sandbox/news.md
++++ b/week4/sandbox/news.md
+@@ -1,45 +1,15 @@
+ # News Summary
+ 
+-## BBC News
+-### Israel strikes Gaza and suspends aid delivery after ceasefire violations
+-A wave of strikes by the Israel Defense Forces follows accusations between Israel and Hamas of breaking the ceasefire in Gaza. The situation remains tense with ongoing conflict.
++## BBC News: AWS Outage Impact
++Amazon Web Services (AWS) reported fixing the underlying problem that caused widespread disruptions affecting over 1,000 companies, including Snapchat, Reddit, Roblox, and Lloyds Bank. Despite resolving the core issue, some services continue to experience "significant errors." The outage affected millions of internet users globally, with many popular platforms facing downtime for over six hours. The incident has sparked discussions about the robustness and reliability of cloud service providers.
+ 
+-### Louvre jewelry heist
+-The Louvre museum in Paris was closed after a masked gang raided its Apollo Wing gallery, stealing priceless jewelry. Investigations are ongoing.
++---
+ 
+-### Questions around US singer D4vd
+-Questions arise about TikTok star D4vd following the discovery of a teenage girl's body in his Tesla, overshadowing his rising career.
++## CNN: Louvre Jewelry Heist
++The Louvre Museum in Paris closed following a dramatic heist in which robbers used a truck-mounted ladder to break into the Apollo Gallery and steal priceless historic jewelry from the French crown jewels dating back to the Napoleonic era. The thieves escaped within minutes with items including a tiara with over a thousand diamonds and sapphires and an emerald necklace gifted by Napoleon. Experts say the chances of recovering the jewelry are slim, as the pieces may be dismantled and sold on the black market. The incident exposed significant security lapses at the museum.
+ 
+-## CNN
+-### Government shutdown live updates
+-Coverage on the ongoing US government shutdown, with political developments and public reactions.
++---
+ 
+-### Louvre museum robbery
+-Thieves stole priceless jewelry from the Louvre in an audacious raid, prompting museum closure and police investigations.
++## The New York Times: Hyundai's Investment and ICE Raid in Georgia
++Hyundai Motor Group is moving forward with its $26 billion investment in the U.S., including a large manufacturing plant in Ellabell, Georgia, despite recent controversies. Over 300 South Korean workers were detained in an ICE raid for working on the wrong visas, causing tension but the company continues to expand, citing the U.S. as their top market priority. The plant aims to create 8,500 jobs and has become a symbol of industrial revival in the area, despite some local resistance and safety incidents during construction.
+ 
+-### Netanyahu halts aid to Gaza and launches strikes
+-Israeli Prime Minister Netanyahu ordered a halt to humanitarian aid entering Gaza and launched strikes following attacks on Israeli forces.
+-
+-## The New York Times
+-### Israel-Palestinian ceasefire under strain
+-Palestinian militants attacked Israeli forces across ceasefire lines, with both sides still insisting on abiding by the truce amid ongoing tensions.
+-
+-### Gaza devastation
+-Residents return to northern Gaza to find widespread destruction that will take years to rebuild.
+-
+-### US political updates
+-Former Representative George Santos walked out of prison after President Trump commuted his sentence. Political ads link Republican candidates to Trump in upcoming elections.
+-
+-# News Summary - Top Stories from BBC, CNN, and The New York Times
+-
+-## BBC News: Skepticism in Kyiv Amidst War
+-
+-A report from Kyiv focuses on the impact of the ongoing war in Ukraine. The local population is weary and skeptical about the possibility of negotiations with Russian President Vladimir Putin. Their distrust follows missile strikes that destroyed homes and businesses in a Kyiv suburb, though remarkably, no lives were lost. Ukrainians express a deep longing for peace but doubt that negotiations with Putin will be fruitful.
+-
+-## CNN: Deadly Plane Crash in Michigan
+-
+-A private business jet crashed near Lansing, Michigan, killing all three people on board during a test flight. The crash involved a Mexican-registered Hawker 800XP jet that was undergoing maintenance. Audio from air traffic control revealed the pilots struggling with stall recovery moments before the crash. The National Transportation Safety Board (NTSB) has opened an investigation into the incident.
+-
+-## The New York Times: Broad Coverage Amid Challenges
+-
+-While the precise article could not be individually accessed due to restrictions, the latest news includes ongoing US military activity near Venezuela, political and social issues in the United States, and stories covering the aftermath of conflicts and local investigations. The coverage highlights the complex geopolitical and domestic landscape.
+diff --git a/week4/sandbox/output.md b/week4/sandbox/output.md
+index 01dc277..124268d 100644
+--- a/week4/sandbox/output.md
++++ b/week4/sandbox/output.md
+@@ -1,7 +1,7 @@
+-## Joke about AI Agents
++# AI Agents Joke
+ 
+-**Opening Patter:** Why did the AI agent refuse to play hide and seek with the other bots?
++**Opening Patter:** Have you heard about the AI agent that tried to become a comedian?
+ 
+-**Setup:** Because every time it tried to hide, it left a digital footprint!
++**Setup:** It spent hours analyzing what makes jokes funny...
+ 
+-**Punchline:** Turns out, it just couldn't cache itself in the system.
+\ No newline at end of file
++**Punchline:** But still couldn’t figure out why people laugh at their own errors!
+\ No newline at end of file
+diff --git a/week4/twin/lab4.ipynb b/week4/twin/lab4.ipynb
+index 73a8077..3f1a2fc 100644
+--- a/week4/twin/lab4.ipynb
++++ b/week4/twin/lab4.ipynb
+@@ -12,10 +12,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 6,
+    "id": "eee53cca",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "True"
++      ]
++     },
++     "execution_count": 6,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "from dotenv import load_dotenv\n",
+     "from agents import Agent, Runner, trace\n",
+@@ -26,7 +37,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 7,
+    "id": "c1426e48",
+    "metadata": {},
+    "outputs": [],
+@@ -39,10 +50,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 8,
+    "id": "8ea29732",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/plain": [
++       "ListToolsResult(meta=None, nextCursor=None, tools=[Tool(name='get_questions_with_answer', title=None, description='\\n    Retrieve from the database all the recorded questions where you have been provided with an official answer.\\n\\n    Returns:\\n        A string containing the questions with their official answers.\\n    ', inputSchema={'properties': {}, 'title': 'get_questions_with_answerArguments', 'type': 'object'}, outputSchema={'properties': {'result': {'title': 'Result', 'type': 'string'}}, 'required': ['result'], 'title': 'get_questions_with_answerOutput', 'type': 'object'}, annotations=None, meta=None), Tool(name='record_question_with_no_answer', title=None, description='\\n    Record the question into the database without an official answer.\\n    \\n    Returns:\\n        Confirmation of which question was recorded into the dabase without an answer.\\n    ', inputSchema={'properties': {'question': {'title': 'Question', 'type': 'string'}}, 'required': ['question'], 'title': 'record_question_with_no_answerArguments', 'type': 'object'}, outputSchema={'properties': {'result': {'title': 'Result', 'type': 'string'}}, 'required': ['result'], 'title': 'record_question_with_no_answerOutput', 'type': 'object'}, annotations=None, meta=None), Tool(name='get_questions_with_no_answer', title=None, description='\\n    Retrieve from the database all the recorded questions without an official answer.\\n    \\n    Returns:\\n        A string containing the questions that do no have official answer.\\n    ', inputSchema={'properties': {}, 'title': 'get_questions_with_no_answerArguments', 'type': 'object'}, outputSchema={'properties': {'result': {'title': 'Result', 'type': 'string'}}, 'required': ['result'], 'title': 'get_questions_with_no_answerOutput', 'type': 'object'}, annotations=None, meta=None), Tool(name='record_answer_to_question', title=None, description='\\n    Record the answer into the database for the question with the provided id.\\n    \\n    Returns:\\n        Confirmation of which question was in the database was updated with the answer.\\n    ', inputSchema={'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'answer': {'title': 'Answer', 'type': 'string'}}, 'required': ['id', 'answer'], 'title': 'record_answer_to_questionArguments', 'type': 'object'}, outputSchema={'properties': {'result': {'title': 'Result', 'type': 'string'}}, 'required': ['result'], 'title': 'record_answer_to_questionOutput', 'type': 'object'}, annotations=None, meta=None)])"
++      ]
++     },
++     "execution_count": 8,
++     "metadata": {},
++     "output_type": "execute_result"
++    }
++   ],
+    "source": [
+     "mcp_tools"
+    ]
+@@ -57,10 +79,26 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 4,
+    "id": "29ffdbed",
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "data": {
++      "text/markdown": [
++       "There is one question for which I have an official recorded answer:\n",
++       "\n",
++       "Question: What is your favorite musical instrument?\n",
++       "Answer: The piano."
++      ],
++      "text/plain": [
++       "<IPython.core.display.Markdown object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
+    "source": [
+     "with trace(\"First MCP server\"):\n",
+     "    async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as server:\n",
+@@ -80,11 +118,31 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": null,
++   "execution_count": 9,
+    "id": "14bc2a4e",
+    "metadata": {},
+-   "outputs": [],
+-   "source": []
++   "outputs": [
++    {
++     "data": {
++      "text/markdown": [
++       "I have recorded that I do not know the answer to the question \"What is my favourite fruit?\""
++      ],
++      "text/plain": [
++       "<IPython.core.display.Markdown object>"
++      ]
++     },
++     "metadata": {},
++     "output_type": "display_data"
++    }
++   ],
++   "source": [
++    "with trace(\"First MCP server\"):\n",
++    "    async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as server:\n",
++    "        agent = Agent(\"Twin\", model=\"gpt-4.1-mini\", mcp_servers=[server])\n",
++    "        task = \"Please record that you do not know the answer to the question to my favourite fruit\"\n",
++    "        response = await Runner.run(agent, task)\n",
++    "        display(Markdown(response.final_output))"
++   ]
+   }
+  ],
+  "metadata": {
+@@ -103,7 +161,7 @@
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+-   "version": "3.12.9"
++   "version": "3.12.11"
+   }
+  },
+  "nbformat": 4,
+diff --git a/week4/twin/questions_mcp_server.py b/week4/twin/questions_mcp_server.py
+index 976fcde..dd81617 100644
+--- a/week4/twin/questions_mcp_server.py
++++ b/week4/twin/questions_mcp_server.py
+@@ -14,6 +14,37 @@ async def get_questions_with_answer() -> str:
+     """
+     return questions.get_questions_with_answer()
+ 
++@mcp.tool()
++async def record_question_with_no_answer(question: str) -> str:
++    """
++    Record the question into the database without an official answer.
++    
++    Returns:
++        Confirmation of which question was recorded into the dabase without an answer.
++    """
++    return questions.record_question_with_no_answer(question)
++
++@mcp.tool()
++async def get_questions_with_no_answer() -> str:
++    """
++    Retrieve from the database all the recorded questions without an official answer.
++    
++    Returns:
++        A string containing the questions that do no have official answer.
++    """
++    return questions.get_questions_with_no_answer()
++
++@mcp.tool()
++async def record_answer_to_question(id: int, answer: str) -> str:
++    """
++    Record the answer into the database for the question with the provided id.
++    
++    Returns:
++        Confirmation of which question was in the database was updated with the answer.
++    """
++    return questions.record_answer_to_question(id, answer)
++
++
+ 
+ if __name__ == "__main__":
+     mcp.run(transport="stdio")
